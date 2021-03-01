@@ -1,0 +1,31 @@
+
+body {
+  background-color: #767579;
+
+}
+
+ picture {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100px;
+      }
+
+      picture.is-small {
+        width: 50px;
+      }
+
+      picture.is-large {
+        width: 100px;
+      }
+
+      img {
+        box-shadow: 0 0 15px #999;
+        border-radius: 50%;
+        width: 100%;
+      }
+
+      img.disabled {
+        opacity: 0.3;
+      }
+

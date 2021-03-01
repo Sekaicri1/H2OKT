@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="estilos.css"/>
+    
+    <title>H2OKT</title>
+
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const $app = document.getElementById("app");
+      const useState = React.useState; //crear un estado
+
+        const Avatar = ({ id, name = "", size }) => {
+        const [enabled, setEnabled] = useState(true);
+        const src = `https://randomuser.me/api/portraits/lego/${id}.jpg`;
+
+        let pictureClassName = "";
+        if (size === "small") {
+          pictureClassName = "is-small";
+        } else if (size === "large") {
+          pictureClassName = "is-large";
+        }
+
+        const imgClassName = enabled ? "" : "disabled"; //activarla si no esta activada
+
+        return (
+          <picture className={pictureClassName}>
+            {id ? (
+              <img
+                onClick={() => {
+                  setEnabled(!enabled);
+                }}
+                className={imgClassName}
+                src={src}
+              />
+            ) : (
+              <i> </i>
+            )}
+            <strong>{enabled ? name : "Se desconecto"}</strong>
+          </picture>
+        );
+      };
+
+      ReactDOM.render(
+        <div>
+          <h1>H2OKT</h1>
+          <Avatar id="2" size="small" name="Cristian" />
+          <Avatar id="8" size="large" name="Manuel" />
+
+        </div>,
+        $app
+      );
+    </script>
+  </body>
+
+</html>
